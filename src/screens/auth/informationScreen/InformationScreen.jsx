@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text,  View } from 'react-native';
 import React from 'react';
 import Button from '../../../components/Button/Button';
 import Colors from '../../../assets/Colors/Colors';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const InformationScreen = () => {
+
   return (
     <View style={styles.container}>
       <View style={styles.imformationWrapper}>
@@ -28,14 +30,12 @@ const InformationScreen = () => {
         <View style={styles.selectionWrapper}>
           <Text style={styles.selectionText}>How Old are you ?</Text>
         </View>
-        <View style={styles.ageDropdown}>
-            <View>
-                <Text>Age Range</Text>
-            </View>
-            <View>
-                <Text>{">"}</Text>
-            </View>
-        </View>
+        <Pressable style={styles.ageDropdown}>
+          <View style={styles.dropDown}>
+            <Text >Age Range</Text>
+            <Icon name="chevron-down" size={15} color="black" />
+          </View>
+        </Pressable>
       </View>
       <View style={styles.finishWrapper}>
         <Button
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   imformationWrapper: {
     paddingHorizontal: 16,
-    paddingTop:16,
+    paddingTop: 16,
     flex: 1,
   },
   headingWrapper: {
@@ -108,12 +108,18 @@ const styles = StyleSheet.create({
   },
   ageDropdown: {
     backgroundColor: Colors.SecondaryBtnColor,
-    flexDirection:"row",
-    justifyContent:'space-between',
-    alignItems:'center',
-    paddingVertical:15,
-    paddingHorizontal:10,
-    borderRadius:30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 30,
+  },
+  dropDown: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
   },
   finishWrapper: {
     backgroundColor: Colors.SecondaryBtnColor,

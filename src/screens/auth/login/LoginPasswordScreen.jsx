@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import Colors from '../../../assets/Colors/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPasswordScreen = () => {
+const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Sign In</Text>
@@ -19,14 +21,10 @@ const LoginPasswordScreen = () => {
           btnTextStyle={styles.btnText}
         />
       </View>
-      <View style={styles.createAccountWrapper}>
+      <TouchableOpacity onPress={()=>navigation.navigate("ForgotPassword")} style={styles.createAccountWrapper}>
         <Text style={styles.createAccountText}> Forgot Password ?</Text>
-        <Button
-          btnStyle={styles.createBtn}
-          title={'Reset'}
-          btnTextStyle={styles.TextBold}
-        />
-      </View>
+        <Text style={styles.TextBold}> Reset</Text>
+      </TouchableOpacity>
     </View>
   );
 };

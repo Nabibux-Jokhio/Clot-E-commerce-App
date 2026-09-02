@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import Colors from '../../../assets/Colors/Colors';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const CreateAccount = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.backBtn}>
+        <Icon name="arrow-back" size={30} color="black" />
+      </TouchableOpacity>
       <Text style={styles.heading}>Create Account </Text>
       <View style={styles.formWrapper}>
         <Input
@@ -29,14 +37,11 @@ const CreateAccount = () => {
           inputStyle={styles.input}
         />
         <Button
+        func={()=>navigation.navigate("InformationScreen")}
           title="Continue"
           btnStyle={styles.loginBtn}
           btnTextStyle={styles.btnText}
         />
-      </View>
-      <View style={styles.createAccountWrapper}>
-        <Text style={styles.createAccountText}> back to </Text>
-        <Text style={styles.TextBold}>Login</Text>
       </View>
     </View>
   );
@@ -50,10 +55,17 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BackGroundColor,
     padding: 16,
   },
+  backBtn:{
+    marginTop:30,
+    backgroundColor:Colors.SecondaryBtnColor,
+    padding:10,
+    width:50,
+    borderRadius:"50%"
+  },
   heading: {
     fontSize: 28,
     fontWeight: '600',
-    marginVertical: 50,
+    marginBottom: 20,
   },
   formWrapper: {
     gap: 20,

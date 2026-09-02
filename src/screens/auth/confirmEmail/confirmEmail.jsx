@@ -3,8 +3,11 @@ import React from 'react';
 import Button from '../../../components/Button/Button';
 import Colors from '../../../assets/Colors/Colors';
 import Images from '../../../assets/images/Images';
+import { useNavigation } from '@react-navigation/native';
 
-const confirmEmail = () => {
+
+const ConfirmEmail = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Image style={styles.messageImg} source={Images.messageImg} />
@@ -14,6 +17,7 @@ const confirmEmail = () => {
         </Text>
       </View>
       <Button
+      func={()=>navigation.navigate("Login")}
         btnStyle={styles.BackBtn}
         btnTextStyle={styles.BtnText}
         title="Back to Login"
@@ -22,7 +26,7 @@ const confirmEmail = () => {
   );
 };
 
-export default confirmEmail;
+export default ConfirmEmail;
 
 const styles = StyleSheet.create({
   container: {

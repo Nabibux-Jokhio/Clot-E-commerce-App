@@ -1,11 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../../../components/Button/Button';
 import Input from '../../../components/Input/Input';
 import Colors from '../../../assets/Colors/Colors';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const ForgotPassword = () => {
+   const navigation = useNavigation()
   return (
-     <View style={styles.container}>
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={styles.backBtn}
+      >
+        <Icon name="arrow-back" size={30} color="black" />
+      </TouchableOpacity>
       <Text style={styles.heading}> Forgot Password</Text>
       <View style={styles.formWrapper}>
         <Input
@@ -14,18 +24,17 @@ const ForgotPassword = () => {
           inputStyle={styles.input}
         />
         <Button
+          func={() => navigation.navigate('ConfirmEmail')}
           title="Continue"
           btnStyle={styles.loginBtn}
           btnTextStyle={styles.btnText}
         />
       </View>
-     
-    
     </View>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,10 +42,17 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BackGroundColor,
     padding: 16,
   },
+  backBtn: {
+    marginTop: 30,
+    backgroundColor: Colors.SecondaryBtnColor,
+    padding: 10,
+    width: 50,
+    borderRadius: '50%',
+  },
   heading: {
     fontSize: 28,
     fontWeight: '600',
-    marginVertical: 50,
+    marginBottom: 20,
   },
   formWrapper: {
     gap: 20,
@@ -59,5 +75,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 18,
   },
- 
 });

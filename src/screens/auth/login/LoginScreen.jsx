@@ -4,7 +4,7 @@ import Input from '../../../components/Input/Input';
 import Colors from '../../../assets/Colors/Colors';
 import Images from '../../../assets/images/Images';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Sign In</Text>
@@ -16,18 +16,15 @@ const LoginScreen = () => {
         />
         <Button
           title="Continue"
+          func={() => navigation.navigate('LoginPasword')}
           btnStyle={styles.loginBtn}
           btnTextStyle={styles.btnText}
         />
       </View>
-      <View style={styles.createAccountWrapper}>
+      <TouchableOpacity style={styles.createAccountWrapper} activeOpacity={0.7} onPress={()=>navigation.navigate("CreateAccount")}>
         <Text style={styles.createAccountText}>Dont have an Account ?</Text>
-        <Button
-          btnStyle={styles.createBtn}
-          title={'Create One'}
-          btnTextStyle={styles.TextBold}
-        />
-      </View>
+        <Text style={styles.TextBold}>Create One</Text>
+      </TouchableOpacity>
       <View style={styles.btnWrapper}>
         <TouchableOpacity style={styles.otherMethodBtn}>
           <Image style={styles.logoIcon} source={Images.appleLogo} />
@@ -82,10 +79,10 @@ const styles = StyleSheet.create({
   },
   createAccountWrapper: {
     marginVertical: 10,
-    flexDirection:'row',
-    alignItems:"center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
- 
+
   createAccountText: {
     fontSize: 14,
   },
