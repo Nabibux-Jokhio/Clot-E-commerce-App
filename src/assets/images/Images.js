@@ -4,6 +4,7 @@ const Images = {
   googleLogo: require('./googleLogo.png'),
   facebookLogo: require('./facebookLogo.png'),
   messageImg: require('./messageImg.png'),
+  profileImg: require('./profileImg.png'),
 };
 
 export default Images;
