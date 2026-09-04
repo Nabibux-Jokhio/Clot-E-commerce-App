@@ -5,6 +5,8 @@ const Images = {
   facebookLogo: require('./facebookLogo.png'),
   messageImg: require('./messageImg.png'),
   profileImg: require('./profileImg.png'),
+  notificationIcon: require('./notificationIcon.png'),
+  orderIcon: require('./orderIcon.png'),
 };
 
 export default Images;

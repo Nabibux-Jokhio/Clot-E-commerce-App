@@ -5,6 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from './src/navigations/authNavigation';
 import Home from "./src/screens/home/HomeScreen"
 import CategoryScreen from "./src/screens/home/CategoryScreen"
+import CategoryItem from "./src/screens/home/CategoryItem"
+import Notification from "./src/screens/notification/NotificationScreen"
+import OrderScreen from "./src/screens/orderScreen/OrderScreen"
 const App = () => {
   return (
     // <SafeAreaProvider>
@@ -15,7 +18,10 @@ const App = () => {
     // </SafeAreaProvider>
     <SafeAreaView style={{ flex: 1 }}>
       {/* <Home/> */}
-      <CategoryScreen/>
+      {/* <CategoryScreen/> */}
+      {/* <CategoryItem/> */}
+      {/* <Notification/> */}
+      <OrderScreen/>
     </SafeAreaView>
   );
 };
