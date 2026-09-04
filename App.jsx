@@ -8,6 +8,8 @@ import CategoryScreen from "./src/screens/home/CategoryScreen"
 import CategoryItem from "./src/screens/home/CategoryItem"
 import Notification from "./src/screens/notification/NotificationScreen"
 import OrderScreen from "./src/screens/orderScreen/OrderScreen"
+import OrderDetails from "./src/screens/orderScreen/OrderDetails"
+import Search from "./src/screens/searchScreen/Search"
 const App = () => {
   return (
     // <SafeAreaProvider>
@@ -21,7 +23,9 @@ const App = () => {
       {/* <CategoryScreen/> */}
       {/* <CategoryItem/> */}
       {/* <Notification/> */}
-      <OrderScreen/>
+      {/* <OrderScreen/> */}
+      {/* <OrderDetails/> */}
+      <Search/>
     </SafeAreaView>
   );
 };
