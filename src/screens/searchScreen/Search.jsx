@@ -135,7 +135,6 @@ const styles = StyleSheet.create({
   searchInput: {
     color: '#000',
     width: '80%',
-
     fontSize: 16,
   },
   searchIcon: {

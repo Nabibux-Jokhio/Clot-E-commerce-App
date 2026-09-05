@@ -4,13 +4,13 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   View,
 } from 'react-native';
 import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Input from '../../components/Input/Input';
 import Card from "../../components/card/Card"
 const HomeScreen = () => {
   return (
@@ -34,10 +34,10 @@ const HomeScreen = () => {
       </View>
       <View style={styles.searchBar}>
         <Icon style={styles.searchIcon} name="search-outline" />
-        <Input
-          placeholderText={'Search'}
-          placeholderTextColor={Colors.blackText}
-          inputStyle={styles.searchInput}
+        <TextInput
+          placeholder='Search'
+          placeholderTextColor={"#000"}
+          style={styles.searchInput}
         />
       </View>
       <ScrollView>

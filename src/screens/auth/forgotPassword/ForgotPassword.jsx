@@ -1,13 +1,18 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from '../../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
+import { useState } from 'react';
 
 const ForgotPassword = () => {
-   const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -18,17 +23,19 @@ const ForgotPassword = () => {
       </TouchableOpacity>
       <Text style={styles.heading}> Forgot Password</Text>
       <View style={styles.formWrapper}>
-        <Input
-          placeholderText="Enter the Email Address"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          inputStyle={styles.input}
+        <TextInput
+          placeholder="Email Address"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={email}
+          onChangeText={text => setEmail(text)}
         />
-        <Button
-          func={() => navigation.navigate('ConfirmEmail')}
-          title="Continue"
-          btnStyle={styles.loginBtn}
-          btnTextStyle={styles.btnText}
-        />
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => navigation.navigate('ConfirmEmail')}
+        >
+          <Text style={styles.btnText}>Continue</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -1,6 +1,5 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import Button from '../../../components/Button/Button';
 import Colors from '../../../assets/Colors/Colors';
 import Images from '../../../assets/images/Images';
 import { useNavigation } from '@react-navigation/native';
@@ -16,12 +15,10 @@ const ConfirmEmail = () => {
           We Sent you an Email to reset your password.
         </Text>
       </View>
-      <Button
-      func={()=>navigation.navigate("Login")}
-        btnStyle={styles.BackBtn}
-        btnTextStyle={styles.BtnText}
-        title="Back to Login"
-      />
+    
+       <TouchableOpacity style={styles.BackBtn} onPress={()=>navigation.navigate("Login")}>
+          <Text style={styles.btnText}>Back to Login</Text>
+        </TouchableOpacity>
     </View>
   );
 };
@@ -53,7 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 20,
   },
-  BtnText: {
+  btnText: {
     color:Colors.BackGroundColor,
     fontWeight:500,
     fontSize:16,

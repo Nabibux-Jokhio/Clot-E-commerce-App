@@ -1,47 +1,93 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from '../../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-
-
+import { useState } from 'react';
 
 const CreateAccount = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const [gender, setGender] = useState("male");
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.backBtn}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={styles.backBtn}
+      >
         <Icon name="arrow-back" size={30} color="black" />
       </TouchableOpacity>
       <Text style={styles.heading}>Create Account </Text>
       <View style={styles.formWrapper}>
-        <Input
-          placeholderText="First Name"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          inputStyle={styles.input}
+        <TextInput
+          placeholder="First Name"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={firstName}
+          onChangeText={text => setFirstName(text)}
         />
-        <Input
-          placeholderText="Last Name"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          inputStyle={styles.input}
+
+        <TextInput
+          placeholder="Last Name"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={lastName}
+          onChangeText={text => setLastName(text)}
         />
-        <Input
-          placeholderText="Email Address"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          inputStyle={styles.input}
+        <TextInput
+          placeholder="Email Address"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={email}
+          onChangeText={text => setEmail(text)}
         />
-        <Input
-          placeholderText="Password"
-          placeholderTextColor="rgba(0,0,0,0.5)"
-          inputStyle={styles.input}
+        <TextInput
+          placeholder="Password"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={Password}
+          onChangeText={text => setPassword(text)}
         />
-        <Button
-        func={()=>navigation.navigate("InformationScreen")}
-          title="Continue"
-          btnStyle={styles.loginBtn}
-          btnTextStyle={styles.btnText}
-        />
+        <View style={styles.radioWrapper}>
+          <Pressable onPress={() => setGender('male')} style={styles.radioBtn}>
+            <Text style={styles.radioText}>Male:</Text>
+            <Icon
+              style={styles.radioIcon}
+              name={
+                gender === 'male'
+                  ? 'radio-button-on-outline'
+                  : 'radio-button-off-outline'
+              }
+            />
+          </Pressable>
+          <Pressable
+            onPress={() => setGender('female')}
+            style={styles.radioBtn}
+          >
+            <Text style={styles.radioText}>female:</Text>
+            <Icon
+              style={styles.radioIcon}
+              name={
+                gender === 'female'
+                  ? 'radio-button-on-outline'
+                  : 'radio-button-off-outline'
+              }
+            />
+          </Pressable>
+        </View>
+
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text style={styles.btnText}>Continue</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -55,12 +101,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BackGroundColor,
     padding: 16,
   },
-  backBtn:{
-    marginTop:30,
-    backgroundColor:Colors.SecondaryBtnColor,
-    padding:10,
-    width:50,
-    borderRadius:"50%"
+  backBtn: {
+    marginTop: 30,
+    backgroundColor: Colors.SecondaryBtnColor,
+    padding: 10,
+    width: 50,
+    borderRadius: '50%',
   },
   heading: {
     fontSize: 28,
@@ -87,6 +133,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 15,
     fontSize: 18,
+    color: '#000',
   },
   createAccountWrapper: {
     marginVertical: 20,
@@ -103,4 +150,27 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginLeft: 2,
   },
+  radioWrapper: {
+    flexDirection: 'row',
+    backgroundColor: Colors.SecondaryBtnColor,
+    justifyContent: 'space-evenly',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 10,
+  },
+  radioBtn: {
+    flexDirection: 'row',
+    alignItems:'center',
+    gap:5,
+  },
+  radioText: {
+    fontWeight:'500',
+    fontSize:16,
+  },
+  radioIcon: {
+    fontSize:16,
+    color:Colors.Primary
+  },
+
+  
 });

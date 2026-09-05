@@ -1,30 +1,62 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Colors from '../../../assets/Colors/Colors';
 import Images from '../../../assets/images/Images';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const handleAuth = () => {
+    console.log(email);
+    navigation.navigate('');
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Sign In</Text>
       <View style={styles.formWrapper}>
-        <Input
-          placeholderText="Email Address"
-          placeholderTextColor="#000"
-          inputStyle={styles.input}
+        <TextInput
+          placeholder="Email Address"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={email}
+          onChangeText={text => setEmail(text)}
         />
-        <Button
-          title="Continue"
-          func={() => navigation.navigate('LoginPasword')}
-          btnStyle={styles.loginBtn}
-          btnTextStyle={styles.btnText}
+        <TextInput
+          placeholder="Password"
+          placeholderTextColor={'#000'}
+          style={styles.input}
+          value={Password}
+          secureTextEntry={true}
+          onChangeText={text => setPassword(text)}
         />
+        <Pressable
+          style={styles.forgotWrapper}
+          onPress={() => navigation.navigate('ForgotPassword')}
+        >
+          <Text style={styles.forgotText}> Forgot Password ?</Text>
+        </Pressable>
+
+        <TouchableOpacity style={styles.loginBtn} onPress={handleAuth}>
+          <Text style={styles.btnText}>Login</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.createAccountWrapper} activeOpacity={0.7} onPress={()=>navigation.navigate("CreateAccount")}>
+      <Pressable
+        style={styles.createAccountWrapper}
+        onPress={() => navigation.navigate('CreateAccount')}
+      >
         <Text style={styles.createAccountText}>Dont have an Account ?</Text>
         <Text style={styles.TextBold}>Create One</Text>
-      </TouchableOpacity>
+      </Pressable>
       <View style={styles.btnWrapper}>
         <TouchableOpacity style={styles.otherMethodBtn}>
           <Image style={styles.logoIcon} source={Images.appleLogo} />
@@ -76,17 +108,25 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 15,
     fontSize: 18,
+    color: '#000',
   },
   createAccountWrapper: {
     marginVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
-
+  forgotWrapper: {
+    alignItems: 'flex-end',
+  },
   createAccountText: {
     fontSize: 14,
   },
   TextBold: {
+    fontWeight: '600',
+    marginLeft: 2,
+  },
+  forgotText: {
+    color:Colors.Primary,
     fontWeight: '600',
     marginLeft: 2,
   },
