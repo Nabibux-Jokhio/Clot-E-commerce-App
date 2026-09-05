@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Image,
   Pressable,
   ScrollView,
@@ -11,34 +12,34 @@ import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Card from "../../components/card/Card"
+import Card from '../../components/card/Card';
+import shoppingItems from '../../utils/utils';
+
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.imgWrapper}>
-          <Image style={styles.profileImg} source={Images.profileImg} />
+        <View style={styles.userInfoWraper}>
+          <View style={styles.imgWrapper}>
+            <Image style={styles.profileImg} source={Images.profileImg} />
+          </View>
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>UserName</Text>
+          </View>
         </View>
-        <View style={styles.genderDropdown}>
-          <Text style={styles.dropdownText}>Men</Text>
-          <Icon style={styles.dropdownIcon} name="chevron-down" color="black" />
+        <View style={styles.iconWrapper}>
+          <View style={styles.searchBar}>
+            <Icon style={styles.searchIcon} name="search-outline" />
+          </View>
+          <View style={styles.cartWrapper}>
+            <Icon
+              style={styles.cartIcon}
+              name="bag-outline"
+              size={10}
+              color="black"
+            />
+          </View>
         </View>
-        <View style={styles.cartWrapper}>
-          <Icon
-            style={styles.cartIcon}
-            name="bag-outline"
-            size={10}
-            color="black"
-          />
-        </View>
-      </View>
-      <View style={styles.searchBar}>
-        <Icon style={styles.searchIcon} name="search-outline" />
-        <TextInput
-          placeholder='Search'
-          placeholderTextColor={"#000"}
-          style={styles.searchInput}
-        />
       </View>
       <ScrollView>
         <View style={styles.sectionHeadingWrapper}>
@@ -49,49 +50,28 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
+
         <View style={styles.categoryCardWrapper}>
-          <View style={styles.categoryCard}>
-            <View style={styles.categoryImgWrapper}>
-              <Image style={styles.categoryImg} source={Images.profileImg} />
-            </View>
-            <View style={styles.categoryTitleWrapper}>
-              <Text style={styles.categoryTiTle}>Hoodies</Text>
-            </View>
-          </View>
-          <View style={styles.categoryCard}>
-            <View style={styles.categoryImgWrapper}>
-              <Image style={styles.categoryImg} source={Images.profileImg} />
-            </View>
-            <View style={styles.categoryTitleWrapper}>
-              <Text style={styles.categoryTiTle}>Hoodies</Text>
-            </View>
-          </View>
-          <View style={styles.categoryCard}>
-            <View style={styles.categoryImgWrapper}>
-              <Image style={styles.categoryImg} source={Images.profileImg} />
-            </View>
-            <View style={styles.categoryTitleWrapper}>
-              <Text style={styles.categoryTiTle}>Hoodies</Text>
-            </View>
-          </View>
-          <View style={styles.categoryCard}>
-            <View style={styles.categoryImgWrapper}>
-              <Image style={styles.categoryImg} source={Images.profileImg} />
-            </View>
-            <View style={styles.categoryTitleWrapper}>
-              <Text style={styles.categoryTiTle}>Hoodies</Text>
-            </View>
-          </View>
-          <View style={styles.categoryCard}>
-            <View style={styles.categoryImgWrapper}>
-              <Image style={styles.categoryImg} source={Images.profileImg} />
-            </View>
-            <View style={styles.categoryTitleWrapper}>
-              <Text style={styles.categoryTiTle}>Hoodies</Text>
-            </View>
-          </View>
+          <FlatList
+            horizontal
+            keyExtractor={item => item.id}
+            data={shoppingItems}
+            renderItem={({ item }) => (
+              <View style={styles.categoryCard}>
+                <View style={styles.categoryImgWrapper}>
+                  <Image
+                    style={styles.categoryImg}
+                    source={{uri:item.image}}
+                  />
+                </View>
+                <View style={styles.categoryTitleWrapper}>
+                  <Text style={styles.categoryTitle}>{item.category}</Text>
+                </View>
+              </View>
+            )}
+          />
         </View>
-         <View style={styles.sectionHeadingWrapper}>
+        <View style={styles.sectionHeadingWrapper}>
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>Top Selling</Text>
           </View>
@@ -99,10 +79,10 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
-       <View style={styles.cardWrapper}>
-         <Card/> 
-         <Card/> 
-       </View>
+        <View style={styles.cardWrapper}>
+          <Card />
+          <Card />
+        </View>
         <View style={styles.sectionHeadingWrapper}>
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>New In</Text>
@@ -111,10 +91,10 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
-         <View style={styles.cardWrapper}>
-         <Card/> 
-         <Card/> 
-       </View>
+        <View style={styles.cardWrapper}>
+          <Card />
+          <Card />
+        </View>
       </ScrollView>
     </View>
   );
@@ -132,12 +112,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 30,
+  },
+  userInfoWraper: {
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
   },
   imgWrapper: {
     borderRadius: '50%',
     borderWidth: 1,
     borderColor: Colors.blackText,
     overflow: 'hidden',
+  },
+  iconWrapper: {
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+  },
+  userName: {
+    fontWeight: '700',
+    fontSize: 20,
   },
   profileImg: {
     width: 40,
@@ -172,25 +167,15 @@ const styles = StyleSheet.create({
     color: Colors.BackGroundColor,
   },
   searchBar: {
-    width: '100%',
     backgroundColor: Colors.SecondaryBtnColor,
-    marginVertical: 20,
-    borderRadius: 30,
-    flexDirection: 'row',
-    gap: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    alignItems: 'center',
+    borderRadius: '50%',
+    padding: 10,
   },
   searchIcon: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '500',
   },
-  searchInput: {
-    width: '85%',
-    fontSize: 16,
-    color: Colors.blackText,
-  },
+
   sectionHeadingWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -205,14 +190,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.Primary,
   },
-  categoryCardWrapper:{
-    flexDirection:'row',
-    alignItems:'center'
+  categoryCardWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
+    marginVertical: 15,
   },
   categoryCard: {
-    width:"20%",
-    marginVertical:15,
-    gap:10,
+    gap: 10,
+    alignItems:'center',
+    marginHorizontal:5,
   },
   categoryImgWrapper: {
     borderRadius: '50%',
@@ -221,14 +208,15 @@ const styles = StyleSheet.create({
   categoryImg: {
     width: 56,
     height: 56,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   categoryTitleWrapper: {},
-  categoryTitle: {},
-  cardWrapper: {
-    flexDirection:'row',
-    gap:10,
-    marginBottom:20,
+  categoryTitle: {
+    fontSize: 10,
   },
-  
+  cardWrapper: {
+    flexDirection: 'row',
+    gap: 10,
+    marginBottom: 20,
+  },
 });

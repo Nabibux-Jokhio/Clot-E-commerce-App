@@ -12,21 +12,21 @@ import OrderDetails from "./src/screens/orderScreen/OrderDetails"
 import Search from "./src/screens/searchScreen/Search"
 const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle='dark-content'/>
-      <NavigationContainer>
-        <AuthNavigation />
-      </NavigationContainer>
-    </SafeAreaProvider>
-    // <SafeAreaView style={{ flex: 1 }}>
-    //   {/* <Home/> */}
-    //   {/* <CategoryScreen/> */}
-    //   {/* <CategoryItem/> */}
-    //   {/* <Notification/> */}
-    //   {/* <OrderScreen/> */}
-    //   {/* <OrderDetails/> */}
-    //   <Search/>
-    // </SafeAreaView>
+    // <SafeAreaProvider>
+    //   <StatusBar barStyle='dark-content'/>
+    //   <NavigationContainer>
+    //     <AuthNavigation />
+    //   </NavigationContainer>
+    // </SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Home/>
+      {/* <CategoryScreen/> */}
+      {/* <CategoryItem/> */}
+      {/* <Notification/> */}
+      {/* <OrderScreen/> */}
+      {/* <OrderDetails/> */}
+      {/* <Search/> */}
+    </SafeAreaView>
   );
 };
 
