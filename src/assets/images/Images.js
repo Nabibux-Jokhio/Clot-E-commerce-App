@@ -7,6 +7,7 @@ const Images = {
   profileImg: require('./profileImg.png'),
   notificationIcon: require('./notificationIcon.png'),
   orderIcon: require('./orderIcon.png'),
+  searchIcon: require('./searchIcon.png'),
 };
 
 export default Images;

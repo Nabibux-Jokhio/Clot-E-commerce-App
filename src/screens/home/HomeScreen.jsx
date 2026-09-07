@@ -50,27 +50,25 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
-
-        <View style={styles.categoryCardWrapper}>
-          <FlatList
-            horizontal
-            keyExtractor={item => item.id}
-            data={shoppingItems}
-            renderItem={({ item }) => (
-              <View style={styles.categoryCard}>
-                <View style={styles.categoryImgWrapper}>
-                  <Image
-                    style={styles.categoryImg}
-                    source={{uri:item.image}}
-                  />
-                </View>
-                <View style={styles.categoryTitleWrapper}>
-                  <Text style={styles.categoryTitle}>{item.category}</Text>
-                </View>
+        <FlatList
+          contentContainerStyle={styles.categoryList}
+          horizontal
+          keyExtractor={item => item.id}
+          data={shoppingItems}
+          renderItem={({ item }) => (
+            <View style={styles.categoryCard}>
+              <View style={styles.categoryImgWrapper}>
+                <Image
+                  style={styles.categoryImg}
+                  source={{ uri: item.image }}
+                />
               </View>
-            )}
-          />
-        </View>
+              <View style={styles.categoryTitleWrapper}>
+                <Text style={styles.categoryTitle}>{item.category}</Text>
+              </View>
+            </View>
+          )}
+        />
         <View style={styles.sectionHeadingWrapper}>
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>Top Selling</Text>
@@ -79,10 +77,13 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
-        <View style={styles.cardWrapper}>
-          <Card />
-          <Card />
-        </View>
+        <FlatList
+          horizontal
+          contentContainerStyle={styles.listContainer}
+          keyExtractor={item => item.id.toString()}
+          data={shoppingItems}
+          renderItem={({ item }) => <Card data={item} />}
+        />
         <View style={styles.sectionHeadingWrapper}>
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>New In</Text>
@@ -91,10 +92,13 @@ const HomeScreen = () => {
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
-        <View style={styles.cardWrapper}>
-          <Card />
-          <Card />
-        </View>
+        <FlatList
+          horizontal
+          contentContainerStyle={styles.listContainer}
+          keyExtractor={item => item.id.toString()}
+          data={shoppingItems}
+          renderItem={({ item }) => <Card data={item} />}
+        />
       </ScrollView>
     </View>
   );
@@ -190,16 +194,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.Primary,
   },
-  categoryCardWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 20,
+  categoryList: {
     marginVertical: 15,
+    gap: 11,
   },
   categoryCard: {
     gap: 10,
-    alignItems:'center',
-    marginHorizontal:5,
+    alignItems: 'center',
   },
   categoryImgWrapper: {
     borderRadius: '50%',
@@ -214,8 +215,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 10,
   },
-  cardWrapper: {
-    flexDirection: 'row',
+  listContainer: {
     gap: 10,
     marginBottom: 20,
   },

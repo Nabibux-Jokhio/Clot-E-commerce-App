@@ -19,13 +19,13 @@ const App = () => {
     //   </NavigationContainer>
     // </SafeAreaProvider>
     <SafeAreaView style={{ flex: 1 }}>
-      <Home/>
+      {/* <Home/> */}
       {/* <CategoryScreen/> */}
       {/* <CategoryItem/> */}
       {/* <Notification/> */}
       {/* <OrderScreen/> */}
       {/* <OrderDetails/> */}
-      {/* <Search/> */}
+      <Search/>
     </SafeAreaView>
   );
 };

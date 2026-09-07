@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
@@ -30,6 +31,7 @@ const Search = () => {
           <Icon style={styles.closeIcon} name="close" />
         </View>
       </View>
+      {/* <View>
       <View style={styles.categoryHeadingWrapper}>
         <Text style={styles.categoryHeading}>Shop by Categories</Text>
       </View>
@@ -59,6 +61,44 @@ const Search = () => {
           </View>
         </View>
       </View>
+      </View> */}
+      {/* <View style={styles.mainSection}>
+        <View style={styles.notificationWrapper}>
+          <Image source={Images.searchIcon} style={styles.notificationIcon} />
+          <Text style={styles.notificationText}>
+            Sorry, we couldn't find any matching result for your Search.
+          </Text>
+        </View>
+        <TouchableOpacity style={styles.exploreBtn}>
+          <Text style={styles.btnText}>Explore Categories</Text>
+        </TouchableOpacity>
+      </View> */}
+      <View style={styles.mainResultSection}>
+        <View style={styles.filterWrapper}>
+          <View style={styles.selected}>
+            <Icon style={styles.selectedIcon} name="funnel-outline" />
+            <Text style={styles.selectedText}>2</Text>
+          </View>
+          <View style={styles.notSelected}>
+            <Text style={styles.notSelectedText}>On Sale</Text>
+          </View>
+          <View style={styles.selected}>
+            <Text style={styles.selectedText}>Price</Text>
+            <Icon style={styles.selectedIcon} name="chevron-down-outline" />
+          </View>
+          <View style={styles.notSelected}>
+            <Text style={styles.notSelectedText}>Sort by</Text>
+            <Icon style={styles.notSelectedIcon} name="chevron-down-outline" />
+          </View>
+          <View style={styles.selected}>
+            <Text style={styles.selectedText}>Men</Text>
+            <Icon style={styles.selectedIcon} name="chevron-down-outline" />
+          </View>
+        </View>
+        <View style={styles.resultWrapper}>
+          <Text style={styles.resultText}>53 Results Found</Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -68,7 +108,7 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     backgroundColor: Colors.BackGroundColor,
   },
   backBtnWrapper: {
@@ -145,4 +185,79 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  mainSection: {
+    width: '100%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 30,
+  },
+  notificationWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+  },
+  notificationIcon: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  notificationText: {
+    fontSize: 24,
+    textAlign: 'center',
+  },
+  exploreBtn: {
+    backgroundColor: Colors.Primary,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  },
+  btnText: {
+    color: Colors.BackGroundColor,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  filterWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginBottom: 20,
+  },
+  selected: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    backgroundColor: Colors.Primary,
+    borderRadius: 20,
+  },
+  selectedIcon: {
+    color: '#fff',
+  },
+  selectedText: {
+    color: '#fff',
+  },
+  notSelected: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    backgroundColor: Colors.SecondaryBtnColor,
+    borderRadius: 20,
+  },
+  notSelectedIcon: {
+    color: '#000',
+  },
+  notSelectedText: {
+    color: '#000',
+  },
+  resultWrapper:{
+    marginBottom:20
+  },
+  resultText:{
+    fontWeight:'700',
+    fontSize:16,
+  }
 });
