@@ -8,6 +8,7 @@ const Images = {
   notificationIcon: require('./notificationIcon.png'),
   orderIcon: require('./orderIcon.png'),
   searchIcon: require('./searchIcon.png'),
+  paymentCardImg: require('./cardImg.png'),
 };
 
 export default Images;
