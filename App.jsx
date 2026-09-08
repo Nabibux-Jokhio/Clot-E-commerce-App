@@ -10,6 +10,12 @@ import Notification from "./src/screens/notification/NotificationScreen"
 import OrderScreen from "./src/screens/orderScreen/OrderScreen"
 import OrderDetails from "./src/screens/orderScreen/OrderDetails"
 import Search from "./src/screens/searchScreen/Search"
+import ProfileScreen from "./src/screens/profile/ProfileScreen"
+import AddressScreen from "./src/screens/profile/AddressScreen"
+import AddAddress from "./src/screens/profile/AddAddress"
+
+
+
 const App = () => {
   return (
     // <SafeAreaProvider>
@@ -25,7 +31,10 @@ const App = () => {
       {/* <Notification/> */}
       {/* <OrderScreen/> */}
       {/* <OrderDetails/> */}
-      <Search/>
+      {/* <Search/> */}
+      {/* <ProfileScreen/> */}
+      {/* <AddressScreen/> */}
+      <AddAddress/>
     </SafeAreaView>
   );
 };
