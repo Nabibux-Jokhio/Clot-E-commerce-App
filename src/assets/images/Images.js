@@ -9,6 +9,8 @@ const Images = {
   orderIcon: require('./orderIcon.png'),
   searchIcon: require('./searchIcon.png'),
   paymentCardImg: require('./cardImg.png'),
+  starRating: require('./starRating.png'),
+  cartImg: require('./cartImg.png'),
 };
 
 export default Images;

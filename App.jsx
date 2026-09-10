@@ -17,6 +17,8 @@ import PaymentScreen from './src/screens/profile/PaymentScreen';
 import AddCard from './src/screens/profile/AddCard';
 import WishlistScreen from './src/screens/profile/WishlistScreen';
 import FavoriteScreen from './src/screens/profile/FavoriteScreen';
+import ProductScreen from './src/screens/productPage/ProductScreen';
+import CartScreen from './src/screens/cart/cartScreem';
 
 const App = () => {
   return (
@@ -39,7 +41,9 @@ const App = () => {
       {/* <AddAddress/> */}
       {/* <PaymentScreen/> */}
       {/* <AddCard/> */}
-      <FavoriteScreen/> 
+      {/* <FavoriteScreen/>  */}
+      {/* <ProductScreen/> */}
+      <CartScreen/>
     </SafeAreaView>
   );
 };
