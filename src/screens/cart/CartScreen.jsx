@@ -11,7 +11,7 @@ import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const cartScreem = () => {
+const CartScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
@@ -22,7 +22,7 @@ const cartScreem = () => {
           <Text style={styles.heading}>Cart</Text>
         </View>
       </View>
-      {/* <View style={styles.mainSection}>
+      <View style={styles.mainSection}>
         <View style={styles.notificationWrapper}>
           <Image source={Images.cartImg} style={styles.notificationIcon} />
           <Text style={styles.notificationText}>Your Cart is Empty</Text>
@@ -30,8 +30,8 @@ const cartScreem = () => {
         <TouchableOpacity style={styles.exploreBtn}>
           <Text style={styles.btnText}>Explore Categories</Text>
         </TouchableOpacity>
-      </View> */}
-      <View style={styles.cartSection}>
+      </View>
+      {/* <View style={styles.cartSection}>
         <View style={styles.removeBtn}>
           <Text style={styles.removeBtnText}>Remove All</Text>
         </View>
@@ -109,12 +109,12 @@ const cartScreem = () => {
             <Text style={styles.cartBtnText}>Checkout </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
 
-export default cartScreem;
+export default CartScreen;
 
 const styles = StyleSheet.create({
   container: {

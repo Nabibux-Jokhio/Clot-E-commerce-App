@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Image,
   Pressable,
   ScrollView,
@@ -9,34 +10,28 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../assets/Colors/Colors';
-import Images from '../../assets/images/Images';
 import Card from '../../components/card/Card';
+import { useNavigation } from '@react-navigation/native';
+import { shoppingItems } from '../../utils/utils';
 
 const CategoryItem = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.backBtnWrapper}>
-        <Pressable style={styles.backBtn}>
+        <Pressable onPress={() => navigation.goBack()} style={styles.backBtn}>
           <Icon style={styles.backIcon} name="arrow-back" />
         </Pressable>
       </View>
       <View style={styles.categoryHeadingWrapper}>
-        <Text style={styles.categoryHeading}>Hoodies (240)</Text>
+        <Text style={styles.categoryHeading}>Hoodies ({shoppingItems.length})</Text>
       </View>
-      <ScrollView>
-        <View style={styles.cardWrapper}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </View>
-      </ScrollView>
+      <FlatList
+        contentContainerStyle={styles.cardWrapper}
+        keyExtractor={item => item.id.toString()}
+        data={shoppingItems}
+        renderItem={({ item }) => <Card data={item} />}
+      />
     </View>
   );
 };
@@ -46,7 +41,7 @@ export default CategoryItem;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     backgroundColor: Colors.BackGroundColor,
   },
   backBtnWrapper: {
@@ -73,7 +68,9 @@ const styles = StyleSheet.create({
   },
   cardWrapper: {
     flexDirection: 'row',
-    gap: 10,
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
   },
 });

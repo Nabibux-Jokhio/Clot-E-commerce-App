@@ -1,46 +1,47 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../assets/Colors/Colors';
-import Images from '../../assets/images/Images';
+import { uniqueCategories } from '../../utils/utils';
+import { useNavigation } from '@react-navigation/native';
 
 const CategoryScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.backBtnWrapper}>
-        <Pressable style={styles.backBtn}>
+        <Pressable onPress={()=>navigation.goBack()} style={styles.backBtn}>
           <Icon style={styles.backIcon} name="arrow-back" />
         </Pressable>
       </View>
       <View style={styles.categoryHeadingWrapper}>
         <Text style={styles.categoryHeading}>Shop by Categories</Text>
       </View>
-      <View style={styles.categoryListWrapper}>
-        <View style={styles.categoryListItem}>
-          <View style={styles.categorylistImgWrapper}>
-            <Image style={styles.categorylistImg} source={Images.profileImg} />
-          </View>
-          <View style={styles.categoryListHeadingWrapper}>
-            <Text style={styles.categoryListHeading}>Hoodies</Text>
-          </View>
-        </View>
-        <View style={styles.categoryListItem}>
-          <View style={styles.categorylistImgWrapper}>
-            <Image style={styles.categorylistImg} source={Images.profileImg} />
-          </View>
-          <View style={styles.categoryListHeadingWrapper}>
-            <Text style={styles.categoryListHeading}>Hoodies</Text>
-          </View>
-        </View>
-        <View style={styles.categoryListItem}>
-          <View style={styles.categorylistImgWrapper}>
-            <Image style={styles.categorylistImg} source={Images.profileImg} />
-          </View>
-          <View style={styles.categoryListHeadingWrapper}>
-            <Text style={styles.categoryListHeading}>Hoodies</Text>
-          </View>
-        </View>
-      </View>
+      <FlatList
+        contentContainerStyle={styles.categoryHeadingWrapper}
+        keyExtractor={item => item.id}
+        data={uniqueCategories}
+        renderItem={({ item }) => (
+          <Pressable onPress={()=>navigation.navigate("CategoryItem")} style={styles.categoryListItem}>
+            <View style={styles.categorylistImgWrapper}>
+              <Image
+                style={styles.categorylistImg}
+                source={{uri:item.image}}
+              />
+            </View>
+            <View style={styles.categoryListHeadingWrapper}>
+              <Text style={styles.categoryListHeading}>{item.category}</Text>
+            </View>
+          </Pressable>
+        )}
+      />
     </View>
   );
 };
@@ -50,7 +51,7 @@ export default CategoryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     backgroundColor: Colors.BackGroundColor,
   },
   backBtnWrapper: {
@@ -70,13 +71,11 @@ const styles = StyleSheet.create({
   },
   categoryHeadingWrapper: {
     marginVertical: 10,
+    gap: 15,
   },
   categoryHeading: {
     fontSize: 24,
     fontWeight: '800',
-  },
-  categoryListWrapper: {
-    gap:15
   },
   categoryListItem: {
     flexDirection: 'row',

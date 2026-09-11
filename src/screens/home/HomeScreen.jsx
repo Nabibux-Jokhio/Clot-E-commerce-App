@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import React from 'react';
@@ -13,9 +12,11 @@ import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Card from '../../components/card/Card';
-import shoppingItems from '../../utils/utils';
+import { shoppingItems, uniqueCategories } from '../../utils/utils';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -31,14 +32,14 @@ const HomeScreen = () => {
           <View style={styles.searchBar}>
             <Icon style={styles.searchIcon} name="search-outline" />
           </View>
-          <View style={styles.cartWrapper}>
+          <Pressable onPress={()=>navigation.navigate("Cart")} style={styles.cartWrapper}>
             <Icon
               style={styles.cartIcon}
               name="bag-outline"
               size={10}
               color="black"
             />
-          </View>
+          </Pressable>
         </View>
       </View>
       <ScrollView>
@@ -46,7 +47,7 @@ const HomeScreen = () => {
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>Categories</Text>
           </View>
-          <Pressable>
+          <Pressable onPress={()=>navigation.navigate("Category")}>
             <Text style={styles.seeAllBtn}>See All</Text>
           </Pressable>
         </View>
@@ -54,7 +55,7 @@ const HomeScreen = () => {
           contentContainerStyle={styles.categoryList}
           horizontal
           keyExtractor={item => item.id}
-          data={shoppingItems}
+          data={uniqueCategories}
           renderItem={({ item }) => (
             <View style={styles.categoryCard}>
               <View style={styles.categoryImgWrapper}>
@@ -99,6 +100,21 @@ const HomeScreen = () => {
           data={shoppingItems}
           renderItem={({ item }) => <Card data={item} />}
         />
+        <View style={styles.sectionHeadingWrapper}>
+          <View style={styles.headingWrapper}>
+            <Text style={styles.sectionHeading}>Products</Text>
+          </View>
+          <Pressable>
+            <Text style={styles.seeAllBtn}>See All</Text>
+          </Pressable>
+        </View>
+        <FlatList
+          horizontal
+          contentContainerStyle={styles.listContainer}
+          keyExtractor={item => item.id.toString()}
+          data={shoppingItems}
+          renderItem={({ item }) => <Card data={item} />}
+        />
       </ScrollView>
     </View>
   );
@@ -110,7 +126,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.BackGroundColor,
-    padding: 16,
+    paddingHorizontal: 10,
+    paddingTop: 30,
   },
   header: {
     flexDirection: 'row',
