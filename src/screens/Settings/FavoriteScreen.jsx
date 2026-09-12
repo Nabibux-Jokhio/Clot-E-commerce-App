@@ -2,14 +2,16 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const FavoriteScreen = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.iconWrapper}>
+        <Pressable onPress={()=>navigation.goBack()}  style={styles.iconWrapper}>
           <Icon style={styles.backIcon} name="chevron-back-outline" />
-        </View>
+        </Pressable>
         <View style={styles.headingWrapper}>
           <Text style={styles.heading}>My Favorite (12)</Text>
         </View>
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     width: '100%',
-    marginVertical: 10,
+    marginVertical: 20,
     alignItems: 'center',
   },
   iconWrapper: {

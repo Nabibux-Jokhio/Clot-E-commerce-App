@@ -3,14 +3,19 @@ import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Images from '../../assets/images/Images';
+import { useNavigation } from '@react-navigation/native';
 
 const PaymentScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.iconWrapper}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={styles.iconWrapper}
+        >
           <Icon style={styles.backIcon} name="chevron-back-outline" />
-        </View>
+        </Pressable>
         <View style={styles.headingWrapper}>
           <Text style={styles.heading}>Add Address</Text>
         </View>
@@ -19,7 +24,7 @@ const PaymentScreen = () => {
         <Text style={styles.cardHeading}>Cards</Text>
       </View>
       <View style={styles.cardsWrapper}>
-        <Pressable style={styles.listItem}>
+        <Pressable onPress={() => navigation.navigate("AddCard")} style={styles.listItem}>
           <View style={styles.cardInfo}>
             <Text style={styles.listText}>123456789</Text>
             <Image

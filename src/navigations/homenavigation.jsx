@@ -12,7 +12,7 @@ function HomeNavigation() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Category" component={CategoriesScreen} />
+      {/* <Stack.Screen name="Category" component={CategoriesScreen} /> */}
       <Stack.Screen name="CategoryItem" component={CategoryItem} />
       <Stack.Screen name="Cart" component={CartScreen} />
     </Stack.Navigator>

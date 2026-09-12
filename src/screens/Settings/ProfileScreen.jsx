@@ -3,8 +3,10 @@ import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.profileImgWrapper}>
@@ -21,15 +23,24 @@ export default function ProfileScreen() {
         </Pressable>
       </View>
       <View style={styles.settingList}>
-        <Pressable style={styles.listItem}>
+        <Pressable
+          style={styles.listItem}
+          onPress={() => navigation.navigate('Address')}
+        >
           <Text style={styles.listText}>Address</Text>
           <Icon style={styles.listIcon} name="chevron-forward-outline" />
         </Pressable>
-        <Pressable style={styles.listItem}>
+        <Pressable
+          style={styles.listItem}
+          onPress={() => navigation.navigate('Wishlist')}
+        >
           <Text style={styles.listText}>Wishlist</Text>
           <Icon style={styles.listIcon} name="chevron-forward-outline" />
         </Pressable>
-        <Pressable style={styles.listItem}>
+        <Pressable
+          style={styles.listItem}
+          onPress={() => navigation.navigate('Payment')}
+        >
           <Text style={styles.listText}>Payment</Text>
           <Icon style={styles.listIcon} name="chevron-forward-outline" />
         </Pressable>
@@ -59,7 +70,7 @@ const styles = StyleSheet.create({
   profileImgWrapper: {
     borderRadius: '50%',
     overflow: 'hidden',
-    marginTop:80
+    marginTop: 80,
   },
   profileImg: {
     width: 80,
@@ -116,14 +127,14 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   signoutWrapper: {
-    marginVertical:30,
+    marginVertical: 30,
   },
   signoutWrapper: {
-    marginVertical:30,
+    marginVertical: 30,
   },
   signoutText: {
-    fontSize:18,
-    fontWeight:'700',
-    color:"#FA3636"
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FA3636',
   },
 });

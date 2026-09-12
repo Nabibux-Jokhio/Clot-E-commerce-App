@@ -4,6 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from './src/navigations/authNavigation';
 import HomeNavigation from './src/navigations/homenavigation';
+import SettingsNavigation from './src/navigations/settingsNavigation';
 
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
       <StatusBar barStyle='dark-content'/>
       <NavigationContainer>
         {/* <AuthNavigation /> */}
-        <HomeNavigation/>
+        {/* <HomeNavigation/> */}
+        <SettingsNavigation/>
       </NavigationContainer>
     </SafeAreaProvider>
    

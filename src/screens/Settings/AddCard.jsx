@@ -1,4 +1,5 @@
 import {
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -8,16 +9,18 @@ import {
 import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
-const AddAddress = () => {
+const AddCard = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.iconWrapper}>
+        <Pressable onPress={()=>navigation.goBack()} style={styles.iconWrapper}>
           <Icon style={styles.backIcon} name="chevron-back-outline" />
-        </View>
+        </Pressable>
         <View style={styles.headingWrapper}>
-          <Text style={styles.heading}>Add Address</Text>
+          <Text style={styles.heading}>Add Card</Text>
         </View>
       </View>
       <View style={styles.formWrapper}>
@@ -25,14 +28,7 @@ const AddAddress = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
-              placeholder="Street Address"
-              placeholderTextColor={'rgba(0,0,0,0.5)'}
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              style={styles.input}
-              placeholder="City"
+              placeholder="Card Number"
               placeholderTextColor={'rgba(0,0,0,0.5)'}
             />
           </View>
@@ -40,17 +36,24 @@ const AddAddress = () => {
             <View style={styles.sideWrapper}>
               <TextInput
                 style={styles.input}
-                placeholder="State"
+                placeholder="CCVA"
                 placeholderTextColor={'rgba(0,0,0,0.5)'}
               />
             </View>
             <View style={styles.sideWrapper}>
               <TextInput
                 style={styles.input}
-                placeholder="Zip Code"
+                placeholder="Exp"
                 placeholderTextColor={'rgba(0,0,0,0.5)'}
               />
             </View>
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.input}
+              placeholder="cardhorlder Name"
+              placeholderTextColor={'rgba(0,0,0,0.5)'}
+            />
           </View>
         </View>
         <TouchableOpacity style={styles.saveBtn}>
@@ -61,7 +64,7 @@ const AddAddress = () => {
   );
 };
 
-export default AddAddress;
+export default AddCard;
 
 const styles = StyleSheet.create({
   container: {
@@ -107,6 +110,7 @@ const styles = StyleSheet.create({
   flexDir: {
     flexDirection: 'row',
     gap: 20,
+    marginBottom:10,
   },
   sideWrapper: {
     backgroundColor: Colors.SecondaryBtnColor,
@@ -114,20 +118,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
   },
-  formWrapper:{
-    flex:1,
-    justifyContent:'space-between',
+  formWrapper: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   saveBtn: {
     backgroundColor: Colors.Primary,
     padding: 15,
     borderRadius: 30,
     alignItems: 'center',
-    marginBottom:10,
+    marginBottom: 10,
   },
   btnText: {
     fontSize: 16,
     fontWeight: '600',
-    color:"#fff"
+    color: '#fff',
   },
 });

@@ -32,7 +32,10 @@ const HomeScreen = () => {
           <View style={styles.searchBar}>
             <Icon style={styles.searchIcon} name="search-outline" />
           </View>
-          <Pressable onPress={()=>navigation.navigate("Cart")} style={styles.cartWrapper}>
+          <Pressable
+            onPress={() => navigation.navigate('Cart')}
+            style={styles.cartWrapper}
+          >
             <Icon
               style={styles.cartIcon}
               name="bag-outline"
@@ -47,9 +50,9 @@ const HomeScreen = () => {
           <View style={styles.headingWrapper}>
             <Text style={styles.sectionHeading}>Categories</Text>
           </View>
-          <Pressable onPress={()=>navigation.navigate("Category")}>
+          {/* <Pressable onPress={()=>navigation.navigate("Category")}>
             <Text style={styles.seeAllBtn}>See All</Text>
-          </Pressable>
+          </Pressable> */}
         </View>
         <FlatList
           contentContainerStyle={styles.categoryList}
@@ -57,7 +60,10 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
           data={uniqueCategories}
           renderItem={({ item }) => (
-            <View style={styles.categoryCard}>
+            <Pressable
+              onPress={() => navigation.navigate('CategoryItem')}
+              style={styles.categoryCard}
+            >
               <View style={styles.categoryImgWrapper}>
                 <Image
                   style={styles.categoryImg}
@@ -67,7 +73,7 @@ const HomeScreen = () => {
               <View style={styles.categoryTitleWrapper}>
                 <Text style={styles.categoryTitle}>{item.category}</Text>
               </View>
-            </View>
+            </Pressable>
           )}
         />
         <View style={styles.sectionHeadingWrapper}>
