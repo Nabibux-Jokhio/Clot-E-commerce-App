@@ -11,8 +11,10 @@ import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Images from '../../assets/images/Images';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductScreen = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -113,7 +115,7 @@ const ProductScreen = () => {
         </View>
       </ScrollView>
       <View style={styles.btnWrapper}>
-        <TouchableOpacity style={styles.cartBtn}>
+        <TouchableOpacity onPress={()=>navigation.navigate("Cart")} style={styles.cartBtn}>
           <Text style={styles.cartBtnText}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     width: '100%',
-    marginVertical: 10,
+    marginVertical: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 20,

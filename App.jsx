@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from './src/navigations/authNavigation';
 import HomeNavigation from './src/navigations/homenavigation';
 import SettingsNavigation from './src/navigations/settingsNavigation';
+import ProductNavigtion  from './src/navigations/productNavigation';
 
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
       <NavigationContainer>
         {/* <AuthNavigation /> */}
         {/* <HomeNavigation/> */}
-        <SettingsNavigation/>
+        {/* <SettingsNavigation/> */}
+        <ProductNavigtion/>
       </NavigationContainer>
     </SafeAreaProvider>
    

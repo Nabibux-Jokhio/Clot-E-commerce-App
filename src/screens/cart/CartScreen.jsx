@@ -10,19 +10,21 @@ import React from 'react';
 import Colors from '../../assets/Colors/Colors';
 import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const CartScreen = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
-        <View style={styles.backBtnWrapper}>
+        <Pressable onPress={()=>navigation.goBack()} style={styles.backBtnWrapper}>
           <Icon style={styles.backIcon} name="chevron-back-outline" />
-        </View>
+        </Pressable>
         <View style={styles.headingWrapper}>
           <Text style={styles.heading}>Cart</Text>
         </View>
       </View>
-      <View style={styles.mainSection}>
+      {/* <View style={styles.mainSection}>
         <View style={styles.notificationWrapper}>
           <Image source={Images.cartImg} style={styles.notificationIcon} />
           <Text style={styles.notificationText}>Your Cart is Empty</Text>
@@ -30,8 +32,8 @@ const CartScreen = () => {
         <TouchableOpacity style={styles.exploreBtn}>
           <Text style={styles.btnText}>Explore Categories</Text>
         </TouchableOpacity>
-      </View>
-      {/* <View style={styles.cartSection}>
+      </View> */}
+      <View style={styles.cartSection}>
         <View style={styles.removeBtn}>
           <Text style={styles.removeBtnText}>Remove All</Text>
         </View>
@@ -105,11 +107,11 @@ const CartScreen = () => {
               <Text style={styles.subtotalPriceText}>$200</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.cartBtn}>
+          <TouchableOpacity onPress={()=>navigation.navigate("Checkout")} style={styles.cartBtn}>
             <Text style={styles.cartBtnText}>Checkout </Text>
           </TouchableOpacity>
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
     width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 30,
   },
   backBtnWrapper: {
     backgroundColor: Colors.SecondaryBtnColor,

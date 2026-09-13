@@ -8,16 +8,17 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '../../assets/Colors/Colors';
-import Images from '../../assets/images/Images';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const CheckoutScreen = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
-        <View style={styles.backBtnWrapper}>
+        <Pressable onPress={()=>navigation.goBack()} style={styles.backBtnWrapper}>
           <Icon style={styles.backIcon} name="chevron-back-outline" />
-        </View>
+        </Pressable>
         <View style={styles.headingWrapper}>
           <Text style={styles.heading}>Cart</Text>
         </View>
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginVertical: 30,
   },
   backBtnWrapper: {
     backgroundColor: Colors.SecondaryBtnColor,
